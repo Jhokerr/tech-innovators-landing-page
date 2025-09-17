@@ -4,33 +4,70 @@ import React from 'react';
 import teamImage from '../assets/about-us.jpg';
 
 const About = () => {
+
+
+// Función de desplazamiento suave
+  const handleSmoothScroll = (event, targetId) => {
+    event.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth', // clave para animación
+      });
+    }
+  };
+
   return (
-    <section id="Acerca" className=" bg-white  "> {/* Añade estas clases */}
-      <div className="container mx-auto px-6">
-        <div className=" pt-20 pb-60 flex flex-col lg:flex-row items-center justify-between gap-12">
+    <section id="Acerca" className="relative bg-white">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="pt-20 pb-40 flex flex-col lg:flex-row items-center justify-between gap-16">
+          
           {/* Columna de la Imagen */}
-          <div className="lg:w-1/2 wow animate__animated animate__fadeInLeft">
+          <div className="lg:w-1/2 relative group">
+            {/* Efecto Glow detrás de la imagen */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-3xl blur-2xl opacity-40 group-hover:opacity-70 transition duration-500"></div>
             <img
               src={teamImage}
               alt="Equipo de Tech Innovators"
-              className="rounded-lg shadow-2xl w-full h-auto transform transition-transform duration-500 hover:scale-105"
+              className="relative rounded-2xl shadow-2xl w-full h-auto transform transition duration-500 group-hover:scale-105"
             />
           </div>
 
           {/* Columna del Contenido */}
-          <div className="lg:w-1/2 text-center lg:text-left wow animate__animated animate__fadeInRight">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
-              Acerca de Nosotros
+          <div className="lg:w-1/2 text-center lg:text-left">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+              Acerca de <span className="text-blue-600">Nosotros</span>
             </h2>
             <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              En **Tech Innovators**, somos un equipo de mentes creativas y expertos en tecnología dedicados a transformar ideas audaces en realidades digitales. Desde nuestra fundación, nos hemos comprometido a ofrecer soluciones de software de vanguardia que no solo satisfacen las necesidades de nuestros clientes, sino que superan sus expectativas.
+              En <span className="font-semibold text-gray-800">Tech Innovators</span>, somos un equipo de mentes creativas y expertos en tecnología dedicados a transformar ideas audaces en realidades digitales.
+              Desde nuestra fundación, nos comprometemos a ofrecer soluciones de software de vanguardia que superan las expectativas de nuestros clientes.
             </p>
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              Creemos firmemente en el poder de la innovación, el diseño centrado en el usuario y la colaboración transparente. Cada proyecto es una oportunidad para aprender, crecer y forjar alianzas duraderas. Nuestro éxito se mide por el éxito de nuestros clientes.
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              Creemos en la innovación, el diseño centrado en el usuario y la colaboración transparente. Cada proyecto es una oportunidad para aprender, crecer y forjar alianzas duraderas.
             </p>
+
+            {/* Métricas / Counters */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-10">
+              <div className="bg-gray-50 rounded-xl shadow-md p-6 hover:shadow-lg transition">
+                <h3 className="text-3xl font-extrabold text-blue-600">100+</h3>
+                <p className="text-gray-700 mt-2">Proyectos</p>
+              </div>
+              <div className="bg-gray-50 rounded-xl shadow-md p-6 hover:shadow-lg transition">
+                <h3 className="text-3xl font-extrabold text-blue-600">50+</h3>
+                <p className="text-gray-700 mt-2">Clientes</p>
+              </div>
+              <div className="bg-gray-50 rounded-xl shadow-md p-6 hover:shadow-lg transition">
+                <h3 className="text-3xl font-extrabold text-blue-600">10+</h3>
+                <p className="text-gray-700 mt-2">Años</p>
+              </div>
+            </div>
+
+            {/* Botón */}
             <a
               href="#contacto"
-              className="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 ease-in-out"
+              onClick={(e) => handleSmoothScroll(e, 'Contacto')}
+              className="inline-block bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold py-3 px-10 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out"
             >
               Conéctate con Nosotros
             </a>
@@ -38,7 +75,8 @@ const About = () => {
         </div>
       </div>
 
-      <div className="bottom-0 left-0 w-full h-24 overflow-hidden">
+      {/* SVG inferior */}
+      <div className="absolute bottom-0 left-0 w-full h-24 overflow-hidden">
         <svg
           viewBox="0 0 1440 320"
           className="w-full h-full text-blue-600"
@@ -51,7 +89,6 @@ const About = () => {
           ></path>
         </svg>
       </div>
-
     </section>
   );
 };

@@ -1,9 +1,6 @@
-// src/components/Services.jsx
-
 import React from 'react';
 
 const Services = () => {
-  // Array de objetos con la información de cada servicio
   const servicesList = [
     {
       icon: "fa-solid fa-code",
@@ -38,35 +35,31 @@ const Services = () => {
   ];
 
   return (
-    <section id="Servicios" className="py-30  bg-linear-to-t from-white via-blue-600 to-blue-600">
+    <section id="Servicios" className="py-24 relative bg-gradient-to-b from-black via-blue-900 to-black text-white overflow-hidden">
       <div className="container mx-auto px-6">
-        {/* Encabezado de la Sección */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Nuestros Servicios
+        {/* Encabezado */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+            Nuestros <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Servicios</span>
           </h2>
-          <p className="text-lg text-white max-w-2xl mx-auto">
-            Ofrecemos un amplio portafolio de soluciones tecnológicas diseñadas para
-            impulsar el éxito de tu empresa.
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Soluciones tecnológicas diseñadas para impulsar el éxito de tu empresa.
           </p>
         </div>
 
-        {/* Cuadrícula de Servicios */}
+        {/* Grid de Servicios */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {servicesList.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg p-8 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl cursor-pointer text-center"
+              className="group bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-white/10 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/40 animate-fadeUp"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="text-blue-600 text-5xl mb-4">
+              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-3xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <i className={service.icon}></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
-                {service.title}
-              </h3>
-              <p className="text-gray-600">
-                {service.description}
-              </p>
+              <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+              <p className="text-gray-300">{service.description}</p>
             </div>
           ))}
         </div>
