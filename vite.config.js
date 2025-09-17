@@ -4,5 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/tech-innovators-landing-page/', // <-- Añade esta línea
   plugins: [react(), tailwindcss()],
 })
+
